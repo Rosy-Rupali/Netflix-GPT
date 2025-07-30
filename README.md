@@ -23,7 +23,13 @@
 - fetch data for Trailer video
 - update store with trailer video data
 - Embedded the youtube video and make it autoplay and mute
-- used tailwind css extensively for containers
+- used tailwind css extensively for container
+- Build MovieList
+- Build MovieCard
+- Build SecondaryContainer with tailwind CSS
+- Create useTopRated, useUpComing and usePopularMovies custom hooks
+- Created GPT search features
+
 
 
 
