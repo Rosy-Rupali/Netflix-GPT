@@ -14,3 +14,4 @@ export const SIGNED_USER =
 };
 
 export const IMG_CDN = "https://image.tmdb.org/t/p/w500/";
+export const LANGUAGE_SUPPORTED = [{identifer: 'en', name: 'English'},{identifer: 'es', name: 'Spanish'},{identifer: 'hi', name: 'Hindi'}, {identifer: 'la', name: 'Latin'}, {identifer: 'ru', name: 'Russian'}, {identifer: 'ja', name: 'Japanese'}]

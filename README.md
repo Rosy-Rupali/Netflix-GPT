@@ -28,7 +28,10 @@
 - Build MovieCard
 - Build SecondaryContainer with tailwind CSS
 - Create useTopRated, useUpComing and usePopularMovies custom hooks
-- Created GPT search features
+- Created GPT Search Page
+- created GPT Search Bar
+- Multi-language feature in our app
+- Integration of GPT API's
 
 
 

@@ -3,13 +3,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
-import { NETFLIX_LOGO, SIGNED_USER } from "../utils/constants";
+import {
+  LANGUAGE_SUPPORTED,
+  NETFLIX_LOGO,
+  SIGNED_USER,
+} from "../utils/constants";
 import { addUser, removeUser } from "../utils/userSlice";
 import { toggleGptSearchView } from "../utils/gptSlice";
+import { changeLanguage } from "../utils/configSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
+  const showGPTSearch = useSelector((store) => store.gptSearch.showSearchView);
+
   const navigate = useNavigate();
   const handleSignOut = () => {
     signOut(auth)
@@ -33,7 +40,10 @@ const Header = () => {
   }, []);
 
   const handleToggleSearchView = () => {
-    dispatch(toggleGptSearchView())
+    dispatch(toggleGptSearchView());
+  };
+  const chooseLanguage = (e) => {
+    dispatch(changeLanguage(e.target.value));
   };
   return (
     <div className="flex justify-between items-center w-full p-2 absolute bg-gradient-to-b from-black z-10">
@@ -43,11 +53,23 @@ const Header = () => {
 
       {user && (
         <div className="flex items-center gap-4">
+          {showGPTSearch && (
+            <select
+              className="m-2 p-2 bg-gray-900 text-white rounded-sm"
+              onClick={chooseLanguage}
+            >
+              {LANGUAGE_SUPPORTED.map((lang) => (
+                <option key={lang.identifer} value={lang.identifer}>
+                  {lang.name}
+                </option>
+              ))}
+            </select>
+          )}
           <button
             className="p-2 rounded-sm bg-purple-900 text-white font-semibold"
             onClick={handleToggleSearchView}
           >
-            GPT Search
+            {showGPTSearch ? "Homepage" : "GPT Search"}
           </button>
           <img src={SIGNED_USER} alt="profile-logo" className="w-10 h-10" />
           <button
