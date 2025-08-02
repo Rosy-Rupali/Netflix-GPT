@@ -17,7 +17,6 @@ const Browse = () => {
   const showGPTSearchView = useSelector(
     (store) => store.gptSearch.showSearchView
   );
-  console.log(showGPTSearchView, 'show')
   return (
     <div>
       <Header />
